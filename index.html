@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benchmark Papers Explorer</title>
+  <!-- Tabulator CSS -->
+  <link href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_midnight.min.css" rel="stylesheet">
+  <!-- ECharts -->
+  <script src="https://unpkg.com/echarts@5.6.0/dist/echarts.min.js"></script>
+  <!-- Fuse.js -->
+  <script src="https://unpkg.com/fuse.js@7.1.0/dist/fuse.min.js"></script>
+  <!-- Tabulator JS -->
+  <script src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <h1>Benchmark Papers Explorer</h1>
+      <span class="subtitle">Top CS Conferences 2024-2026</span>
+    </div>
+    <div class="header-right">
+      <button id="btn-export" class="btn btn-secondary">Export CSV</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Stats Overview -->
+    <section class="stats-section" id="stats-section">
+      <div class="stats-toggle">
+        <button id="btn-toggle-charts" class="btn btn-text">Charts ▼</button>
+      </div>
+      <div class="charts-wrapper" id="charts-wrapper">
+        <div class="chart-box" id="chart-domain"></div>
+        <div class="chart-box" id="chart-category"></div>
+        <div class="chart-box" id="chart-year-conf"></div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters-section">
+      <!-- Search -->
+      <div class="filter-row">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search papers by title..." autocomplete="off">
+          <span class="search-icon">&#128269;</span>
+        </div>
+      </div>
+
+      <!-- Domain filter -->
+      <div class="filter-row">
+        <label class="filter-label">Domain:</label>
+        <div class="filter-chips" id="filter-domain"></div>
+      </div>
+
+      <!-- Category filter -->
+      <div class="filter-row">
+        <label class="filter-label">Category:</label>
+        <div class="filter-chips filter-chips-wrap" id="filter-category"></div>
+      </div>
+
+      <!-- Conference filter -->
+      <div class="filter-row">
+        <label class="filter-label">Conference:</label>
+        <div class="filter-chips filter-chips-wrap" id="filter-conference"></div>
+      </div>
+
+      <!-- Year filter -->
+      <div class="filter-row">
+        <label class="filter-label">Year:</label>
+        <div class="filter-chips" id="filter-year"></div>
+      </div>
+
+      <!-- Keyword filter -->
+      <div class="filter-row">
+        <label class="filter-label">Keyword:</label>
+        <div class="filter-chips" id="filter-keyword"></div>
+      </div>
+
+      <!-- Reset + count -->
+      <div class="filter-row filter-footer">
+        <button id="btn-reset" class="btn btn-secondary">Reset</button>
+        <span class="result-count" id="result-count">Loading...</span>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="table-section">
+      <div id="papers-table"></div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/filters.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
