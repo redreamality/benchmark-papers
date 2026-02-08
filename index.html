@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benchmark Papers Explorer</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WM6C44V4Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4WM6C44V4Z');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4617864538353929"
+       crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-4617864538353929">
   <!-- Tabulator CSS -->
   <link href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_midnight.min.css" rel="stylesheet">
   <!-- ECharts -->
@@ -16,6 +28,32 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="https://redreamality.com" class="nav-brand">Remy's Blog</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">
+        <svg width="20" height="14" viewBox="0 0 17 14" fill="none">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="https://redreamality.com">Home</a></li>
+        <li class="nav-dropdown-parent">
+          <button class="nav-dropdown-btn" id="garden-toggle">Garden <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+          <ul class="nav-dropdown" id="garden-dropdown">
+            <li><a href="https://redreamality.com/blog">Blog</a></li>
+            <li><a href="https://redreamality.com/talks">Talks</a></li>
+            <li><a href="https://redreamality.com/questions">Questions</a></li>
+            <li><a href="https://redreamality.com/notes">Notes</a></li>
+          </ul>
+        </li>
+        <li><a href="https://redreamality.com/projects">Projects</a></li>
+        <li><a href="https://redreamality.com/about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- Header -->
   <header class="header">
     <div class="header-left">
@@ -92,6 +130,34 @@
       <div id="papers-table"></div>
     </section>
   </main>
+
+  <!-- Nav toggle script -->
+  <script>
+  (function() {
+    var toggle = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+    var gardenBtn = document.getElementById('garden-toggle');
+    var gardenDd = document.getElementById('garden-dropdown');
+    var chevron = gardenBtn ? gardenBtn.querySelector('.nav-chevron') : null;
+
+    toggle.addEventListener('click', function() {
+      links.classList.toggle('show');
+    });
+
+    gardenBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      gardenDd.classList.toggle('show');
+      if (chevron) chevron.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown-parent')) {
+        gardenDd.classList.remove('show');
+        if (chevron) chevron.classList.remove('open');
+      }
+    });
+  })();
+  </script>
 
   <!-- Scripts -->
   <script src="js/filters.js"></script>
